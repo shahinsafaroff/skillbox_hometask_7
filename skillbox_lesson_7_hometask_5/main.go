@@ -14,7 +14,7 @@ func main() {
 		fmt.Println(10-attempts, " tries left ")
 		fmt.Print("Please enter guessed number: \n")
 		_, _ = fmt.Scan(&num)
-		fmt.Print(" You've entered number is : ", num)
+		fmt.Print(" You've entered number is: ", num)
 		if num > target {
 			fmt.Println(" Your guess is higher, enter lesser number")
 		} else if num < target {
