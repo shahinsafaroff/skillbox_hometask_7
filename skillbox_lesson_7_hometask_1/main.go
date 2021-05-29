@@ -15,5 +15,5 @@ return sum
 func main() {
 	var b int
 	b = tickets()
-	fmt.Println("Количество счастливых билетов: ", b)
+	fmt.Println("Количество зеркальных счастливых билетов: ", b)
 }
