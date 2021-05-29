@@ -1,30 +1,28 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 func main () {
-	var i, count, distance, n1, n2, max int
-	count = 0
-	distance = 0
-	current := [3]int{0, 0, 0}
-	for i = 100000; i <= 999999; i++ {
-		if i/100000%10+i/10000%10+i/1000%10 == i/100%10+i/10%10+i%10 {
-			current[count%3] = i/100000%10 + i/10000%10 + i/1000%10 + i/100%10 + i/10%10 + i%10
-			if count > 0 {
-				distance = current[count%3] - current[(count-1)%3]
-				if distance >= max {
-					max = distance
-					n1 = current[(count-1)%3]
-					n2 = current[count%3]
-				}
-			} else {
-				n1 = 0
-				n2 = max
-				max = current[0]
+	var maxScopeTickets, happyTicketNumber, ticketNumber int
+	happyTicketNumber = 100000
+
+	for ticketNumber = 100000; ticketNumber <=999999; ticketNumber++{
+		var sumOfFirstHalf, sumOfSecondHalf int
+
+		for n := 0; n < 3; n++ {
+			sumOfFirstHalf += ticketNumber / int(math.Pow10(n)) % 10
+			sumOfSecondHalf += ticketNumber / int(math.Pow10(n+3)) % 10
+		}
+		if sumOfFirstHalf == sumOfSecondHalf {
+			scope := ticketNumber - happyTicketNumber
+			if scope > maxScopeTickets {
+				maxScopeTickets = scope
 			}
-			count++
+			happyTicketNumber = ticketNumber
 		}
 	}
-		fmt.Printf("\nCount=%d", count)
-		fmt.Printf("\nNumber1=%d, Number2=%d, Distance=%d", n1, n2, max)
-	}
+	fmt.Println("Tickets are needed to buy: ", maxScopeTickets)
+}

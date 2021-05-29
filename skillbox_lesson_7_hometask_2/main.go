@@ -1,27 +1,24 @@
 package main
 import "fmt"
 func main() {
-	var chessSize, i, j int
-	fmt.Scan(&chessSize)
-	fmt.Println("Here's Chess table on your front:\n")
-	for i=0; i<=chessSize; i++ {
-		for j=0; j<=chessSize; j++ {
-			if(i%2==1) {
-				if (j%2 == 1) {
-					fmt.Printf(" ")
-				} else {
-					fmt.Printf("*")
-				}
-			} else {
-				if (j%2 == 1) {
-					fmt.Printf("*")
-				}else{
-					fmt.Printf(" ")
-					}
-				}
+
+	var width, height, row, col int
+	var current, temp string
+	fmt.Println("Please enter height and width of chess table: \n")
+	fmt.Scan(&width, &height)
+
+	for row = 0; row <height; row++ {
+	current, temp = "*", " "
+			if row%2 != 0 {
+				current, temp = temp, current
 			}
-		fmt.Printf("\n")
+			for col = 0; col < width; col++{
+				fmt.Print(current)
+				current, temp = temp, current
+			}
+			fmt.Println()
 	}
+	fmt.Println("end")
 	}
 
 
