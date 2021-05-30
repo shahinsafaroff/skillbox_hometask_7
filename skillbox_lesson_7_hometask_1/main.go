@@ -5,7 +5,7 @@ import (
 
 func main() {
 const min = 100_000
-const max = 999_000
+const max = 999_999
 var counter int
 for ticket :=min; ticket<= max; ticket++ {
 	var rev int
